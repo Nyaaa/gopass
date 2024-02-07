@@ -24,3 +24,22 @@ func GetAllItems(c *gin.Context) {
 		},
 		)
 }
+
+func DeleteItem(c *gin.Context) {
+    article := c.Param("article")
+    var item Item
+
+    if result := DB.First(&item, "article = ?", article); result.Error != nil {
+        c.AbortWithError(http.StatusNotFound, result.Error)
+        return
+    }
+
+    DB.Delete(&item)
+    c.Status(http.StatusOK)
+}
+
+func RegisterRoutes(router *gin.Engine) {
+	routes := router.Group("/items")
+	routes.GET("/", GetAllItems)
+	routes.DELETE("/:article", DeleteItem)
+}

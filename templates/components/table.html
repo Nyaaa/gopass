@@ -8,12 +8,13 @@
         <th>Is set</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody hx-confirm="Are you sure?" hx-target="closest tr" hx-swap="outerHTML swap:1s">
     {{range .payload }}
-        <tr>
-            <td>{{.Article}}</td>
-            <td>{{.Name}}</td>
-            <td>{{.IsSet}}</td>
+      <tr>
+        <td>{{.Article}}</td>
+        <td>{{.Name}}</td>
+        <td>{{.IsSet}}</td>
+        <td><button class="btn btn-warning" hx-delete="/items/{{.Article}}">Delete</button></td>
       </tr>
     {{end}}
     </tbody>

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"net/http"
 	"github.com/gin-gonic/gin"
 	"gopass/models"
+	"net/http"
 )
 
 func main() {
@@ -11,21 +11,20 @@ func main() {
 	router.LoadHTMLGlob("templates/**/*")
 	router.Static("/static", "./static")
 
-	router.GET("/", func(c *gin.Context) { 
+	router.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK,
 			"index.html",
 			gin.H{"title": "Home Page"},
-			)
-  	})
-	router.GET("/home", func(c *gin.Context) { 
+		)
+	})
+	router.GET("/home", func(c *gin.Context) {
 		c.HTML(http.StatusOK,
 			"home.html",
 			gin.H{"title": "Home Page"},
-			)
-  	})
-	router.GET("/items", models.GetAllItems)
+		)
+	})
 
+	models.RegisterRoutes(router)
 	models.ConnectDB()
-
 	router.Run()
 }

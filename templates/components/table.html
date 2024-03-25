@@ -19,5 +19,14 @@
     {{end}}
     </tbody>
   </table>
+  <form hx-post="/items/">
+      <label>Article</label>
+      <input type="text" class="form-control" name="article">
+      <label>Name</label>
+      <input type="text" class="form-control" name="name">
+      <label>Is Set</label>
+      <input type="checkbox" class="form-control" value="true" name="isSet">
+    <button class="btn btn-default" type="submit">Submit</button>
+  </form>
 </div>
 </div>

@@ -52,7 +52,7 @@ func CreateItem(c *gin.Context) {
 		return
 	}
 
-	c.IndentedJSON(http.StatusCreated, gin.H{"status": "success"})
+	GetAllItems(c)
 }
 
 func RegisterRoutes(router *gin.Engine) {

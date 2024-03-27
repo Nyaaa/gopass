@@ -1,4 +1,4 @@
-<div class="overflow-x-auto">
+<div id="table-and-form" class="overflow-x-auto">
   <div class="overflow-x-auto">
   <table class="table table-zebra">
     <thead>
@@ -19,7 +19,7 @@
     {{end}}
     </tbody>
   </table>
-  <form hx-post="/items/">
+  <form hx-post="/items/" hx-target="#table-and-form">
       <label>Article</label>
       <input type="text" class="form-control" name="article">
       <label>Name</label>
